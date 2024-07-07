@@ -1,14 +1,6 @@
 import { AuthProvider } from "@refinedev/core"
 import { API_URL, dataProvider } from "./data"
-
-type User = {
-    id: number;
-    name: string;
-    email: string;
-    jobTitle: string;
-    timezone: string;
-    avatarUrl: string;
-}
+import type { User } from "@/graphql/schema.types";
 
 export const authCredentials = {
     email: "georgetheprogrammer@gmail.com",
@@ -38,7 +30,7 @@ export const authProvider: AuthProvider = {
             localStorage.setItem("access_token", data.login.accessToken);
             return {
                 success: true,
-                redirectTo: "/"
+                redirectTo: "/home"
             };
         } catch (e) {
             const error = e as Error;
