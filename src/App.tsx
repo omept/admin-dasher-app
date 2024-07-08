@@ -21,6 +21,7 @@ import { authProvider, dataProvider, liveProvider } from "./providers";
 
 import { Home, ForgotPassword, Login, Register } from "./pages";
 import Layout from "./components/layouts";
+import { resources } from "./config/resources";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               dataProvider={dataProvider}
               liveProvider={liveProvider}
               authProvider={authProvider}
+              resources={resources}
               notificationProvider={useNotificationProvider}
               routerProvider={routerBindings}
               options={{
