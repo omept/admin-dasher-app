@@ -1,8 +1,10 @@
 import { CalendarOutlined } from "@ant-design/icons";
-import { Card } from "antd";
-import React from "react";
+import { Card, List } from "antd";
+import React, { useState } from "react";
+import { Text } from "../text";
 
 const UpcomingEvents = () => {
+  const [isLoading, setisLoading] = useState(true);
   return (
     <>
       <Card
@@ -20,9 +22,23 @@ const UpcomingEvents = () => {
             }}
           >
             <CalendarOutlined />
+            <Text size="sm" style={{ marginLeft: "0.7rem" }}>
+              Upcoming Event
+            </Text>
           </div>
         }
-      ></Card>
+      >
+        {isLoading ? (
+          <List
+            itemLayout="horizontal"
+            dataSource={Array.from({ length: 5 }).map((_, index) => ({
+              id: index,
+            }))}
+          ></List>
+        ) : (
+          <List></List>
+        )}
+      </Card>
     </>
   );
 };
