@@ -1,11 +1,11 @@
 export const currencyNumber = (
   value: number,
-  options?: Intl.NumberFormatOptions & { style: string, currency: string },
+  options?: Intl.NumberFormatOptions,
 ) => {
   if (
-    typeof Intl === "object" &&
+    typeof Intl == "object" &&
     Intl &&
-    typeof Intl.NumberFormat === "function"
+    typeof Intl.NumberFormat == "function"
   ) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
