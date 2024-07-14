@@ -22,6 +22,7 @@ import { authProvider, dataProvider, liveProvider } from "./providers";
 import { Home, ForgotPassword, Login, Register } from "./pages";
 import Layout from "./components/layouts";
 import { resources } from "./config/resources";
+import CompanyList from "./pages/company/list";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
                 }
               >
                 <Route path="/home" element={<Home />} />
+                <Route path="/companies" element={<CompanyList />} />
               </Route>
             </Routes>
             <RefineKbar />
