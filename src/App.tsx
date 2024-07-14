@@ -4,7 +4,7 @@ import {
   Refine,
   WelcomePage,
 } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+// import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import { useNotificationProvider } from "@refinedev/antd";
@@ -28,48 +28,48 @@ function App() {
     <BrowserRouter>
       <RefineKbarProvider>
         <AntdApp>
-          <DevtoolsProvider>
-            <Refine
-              dataProvider={dataProvider}
-              liveProvider={liveProvider}
-              authProvider={authProvider}
-              resources={resources}
-              notificationProvider={useNotificationProvider}
-              routerProvider={routerBindings}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-                useNewQueryKeys: true,
-                projectId: "SB7Z1V-uIfi8P-ZYiopt",
-                liveMode: "auto",
-              }}
-            >
-              <Routes>
-                <Route index element={<WelcomePage />} />
-                <Route path="register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route
-                  element={
-                    <Authenticated
-                      key="authenticated-layout"
-                      fallback={<CatchAllNavigate to="/login" />}
-                    >
-                      <Layout>
-                        <Outlet />
-                      </Layout>
-                    </Authenticated>
-                  }
-                >
-                  <Route path="/home" element={<Home />} />
-                </Route>
-              </Routes>
-              <RefineKbar />
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
-            </Refine>
-            <DevtoolsPanel />
-          </DevtoolsProvider>
+          {/* <DevtoolsProvider> */}
+          <Refine
+            dataProvider={dataProvider}
+            liveProvider={liveProvider}
+            authProvider={authProvider}
+            resources={resources}
+            notificationProvider={useNotificationProvider}
+            routerProvider={routerBindings}
+            options={{
+              syncWithLocation: true,
+              warnWhenUnsavedChanges: true,
+              useNewQueryKeys: true,
+              projectId: "SB7Z1V-uIfi8P-ZYiopt",
+              liveMode: "auto",
+            }}
+          >
+            <Routes>
+              <Route index element={<WelcomePage />} />
+              <Route path="register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route
+                element={
+                  <Authenticated
+                    key="authenticated-layout"
+                    fallback={<CatchAllNavigate to="/login" />}
+                  >
+                    <Layout>
+                      <Outlet />
+                    </Layout>
+                  </Authenticated>
+                }
+              >
+                <Route path="/home" element={<Home />} />
+              </Route>
+            </Routes>
+            <RefineKbar />
+            <UnsavedChangesNotifier />
+            <DocumentTitleHandler />
+          </Refine>
+          {/* <DevtoolsPanel /> */}
+          {/* </DevtoolsProvider> */}
         </AntdApp>
       </RefineKbarProvider>
     </BrowserRouter>
