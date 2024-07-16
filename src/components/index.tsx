@@ -8,6 +8,7 @@ import KanbanColumnSkeleton from "./skeleton/kanban";
 import AccordionHeaderSkeleton from "./skeleton/accordion-header";
 import DashboardLatestActivities from "@/components/home/dashboard-latest-activities";
 import SelectOptionWithAvatar from "@/components/select-option-with-avatar";
+import ContactStatusTag from "@/components/contact-status-tag";
 
 export {
   DealsChart,
@@ -20,4 +21,5 @@ export {
   LatestActivitiesSkeleton,
   KanbanColumnSkeleton,
   SelectOptionWithAvatar,
+  ContactStatusTag,
 };
