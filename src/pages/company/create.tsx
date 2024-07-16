@@ -69,9 +69,10 @@ const CompanyCreate = () => {
               <Select
                 {...selectProps}
                 placeholder="Please select a sales owner"
-                options={queryResult?.data?.map((user: User) => {
+                options={queryResult?.data?.data?.map((userEntry) => {
+                  const user = userEntry as User;
                   return {
-                    values: user.id,
+                    value: user.id,
                     label: (
                       <SelectOptionWithAvatar
                         name={user.name}
