@@ -15,7 +15,7 @@ import {
 import { getDefaultFilter, useGo } from "@refinedev/core";
 import { Input, Space, Table } from "antd";
 
-const CompanyList = () => {
+const CompanyList = ({ children }: React.PropsWithChildren) => {
   const go = useGo();
   const { tableProps, filters } = useTable({
     resource: "companies",
@@ -45,6 +45,7 @@ const CompanyList = () => {
 
   return (
     <div style={{ marginTop: "32px" }}>
+      {children ? children : <></>}
       <List
         breadcrumb={false}
         headerButtons={() => {
