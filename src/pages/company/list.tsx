@@ -1,7 +1,7 @@
 import CustomAvatar from "@/components/custom-avatar";
 import { Text } from "@/components/text";
 import { COMPANIES_LIST_QUERY } from "@/graphql/quaries";
-import type { Company as CompanyType } from "@/graphql/schema.types";
+import { Company } from "@/graphql/schema.types";
 import { currencyNumber } from "@/utilities";
 import { SearchOutlined } from "@ant-design/icons";
 import {
@@ -22,7 +22,8 @@ const CompanyList = () => {
     pagination: {
       pageSize: 12,
     },
-    onSearch: (vals) => {
+    onSearch: (values) => {
+      const vals = values as Company;
       return [
         {
           field: "name",
@@ -33,6 +34,9 @@ const CompanyList = () => {
     },
     filters: {
       initial: [{ field: "name", operator: "contains", value: undefined }],
+    },
+    sorters: {
+      initial: [{ field: "createdAt", order: "desc" }],
     },
     meta: {
       gqlQuery: COMPANIES_LIST_QUERY,
@@ -78,27 +82,31 @@ const CompanyList = () => {
                 <Input placeholder="Search Company" />
               </FilterDropdown>
             )}
-            render={(value, record) => (
-              <Space>
-                <CustomAvatar
-                  shape="square"
-                  name={record.name}
-                  src={record.avatarUrl}
-                />
-                <Text
-                  style={{
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {record.name}
-                </Text>
-              </Space>
-            )}
+            render={(value, recordEntry) => {
+              const record: Company = recordEntry as unknown as Company;
+              return (
+                <Space>
+                  <CustomAvatar
+                    shape="square"
+                    name={record.name}
+                    src={record.avatarUrl}
+                  />
+                  <Text
+                    style={{
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {record.name}
+                  </Text>
+                </Space>
+              );
+            }}
           />
           <Table.Column
             dataIndex="totalRevenue"
             title="Open Deals Amount"
-            render={(value, company) => {
+            render={(value, companyEntry) => {
+              const company: Company = companyEntry as unknown as Company;
               return (
                 <Text
                   style={{
